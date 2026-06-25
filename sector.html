@@ -105,20 +105,20 @@ td{padding:7px 10px;border-bottom:1px solid #1e293b;vertical-align:middle}
 <div class="header">
   <div class="header-top">
     <span class="header-title">Aegis Portfolio Dashboard</span>
-    <span class="header-meta">生成: 2026-06-26 00:48</span>
+    <span class="header-meta">生成: 2026-06-26 08:00</span>
   </div>
   <div class="summary-cards">
     <div class="scard">
       <div class="scard-label">保有評価額合計</div>
-      <div class="scard-value">3,265,200円</div>
+      <div class="scard-value">3,291,850円</div>
     </div>
     <div class="scard">
       <div class="scard-label">含み損益（円）</div>
-      <div class="scard-value pos">+220,708円</div>
+      <div class="scard-value pos">+247,358円</div>
     </div>
     <div class="scard">
       <div class="scard-label">含み損益（%）</div>
-      <div class="scard-value pos">+7.2%</div>
+      <div class="scard-value pos">+8.1%</div>
     </div>
     <div class="scard">
       <div class="scard-label">アラート状況</div>
@@ -135,9 +135,9 @@ td{padding:7px 10px;border-bottom:1px solid #1e293b;vertical-align:middle}
 
 <div class="grid2">
   <div class="card">
-    <h2>セクター別評価額 <span class="date-badge">2026-06-25</span></h2>
+    <h2>セクター別評価額 <span class="date-badge">2026-06-26</span></h2>
     <div class="chart-wrap" style="height:300px"><canvas id="sPieChart"></canvas></div>
-    <p class="note">対象: 高配当方針株のみ　合計: 2,686,850円</p>
+    <p class="note">対象: 高配当方針株のみ　合計: 2,704,100円</p>
   </div>
   <div class="card">
     <h2>セクター比率（30%ルール）</h2>
@@ -155,7 +155,7 @@ td{padding:7px 10px;border-bottom:1px solid #1e293b;vertical-align:middle}
     <thead><tr>
       <th>セクター</th><th>評価額</th><th>比率</th><th>30%まで残枠</th><th>警告</th>
     </tr></thead>
-    <tbody><tr><td>銀行業</td><td class="num">635,600円</td><td class="num">23.7%</td><td class="num ">170,455円</td><td>—</td></tr><tr><td>医薬品</td><td class="num">505,300円</td><td class="num">18.8%</td><td class="num ">300,755円</td><td>—</td></tr><tr><td>石油・石炭製品</td><td class="num">380,500円</td><td class="num">14.2%</td><td class="num ">425,555円</td><td>—</td></tr><tr><td>情報・通信業</td><td class="num">355,500円</td><td class="num">13.2%</td><td class="num ">450,555円</td><td>—</td></tr><tr><td>化学</td><td class="num">259,450円</td><td class="num">9.7%</td><td class="num ">546,605円</td><td>—</td></tr><tr><td>輸送用機器</td><td class="num">214,400円</td><td class="num">8.0%</td><td class="num ">591,655円</td><td>—</td></tr><tr><td>卸売業</td><td class="num">181,900円</td><td class="num">6.8%</td><td class="num ">624,155円</td><td>—</td></tr><tr><td>建設業</td><td class="num">154,200円</td><td class="num">5.7%</td><td class="num ">651,855円</td><td>—</td></tr></tbody>
+    <tbody><tr><td>銀行業</td><td class="num">634,000円</td><td class="num">23.4%</td><td class="num ">177,230円</td><td>—</td></tr><tr><td>医薬品</td><td class="num">513,300円</td><td class="num">19.0%</td><td class="num ">297,930円</td><td>—</td></tr><tr><td>石油・石炭製品</td><td class="num">381,500円</td><td class="num">14.1%</td><td class="num ">429,730円</td><td>—</td></tr><tr><td>情報・通信業</td><td class="num">356,100円</td><td class="num">13.2%</td><td class="num ">455,130円</td><td>—</td></tr><tr><td>化学</td><td class="num">264,800円</td><td class="num">9.8%</td><td class="num ">546,430円</td><td>—</td></tr><tr><td>輸送用機器</td><td class="num">218,400円</td><td class="num">8.1%</td><td class="num ">592,830円</td><td>—</td></tr><tr><td>卸売業</td><td class="num">181,400円</td><td class="num">6.7%</td><td class="num ">629,830円</td><td>—</td></tr><tr><td>建設業</td><td class="num">154,600円</td><td class="num">5.7%</td><td class="num ">656,630円</td><td>—</td></tr></tbody>
   </table>
 </div>
 
@@ -167,7 +167,7 @@ td{padding:7px 10px;border-bottom:1px solid #1e293b;vertical-align:middle}
 (function(){
   new Chart(document.getElementById('sTrendChart'),{
     type:'line',
-    data:{labels:["2026-06-21", "2026-06-22", "2026-06-23", "2026-06-24", "2026-06-25"],datasets:[{"label": "化学", "data": [null, null, 9.7, 9.5, 9.7], "borderColor": "#6366f1", "backgroundColor": "#6366f122", "tension": 0.3, "spanGaps": true}, {"label": "輸送用機器", "data": [null, null, 7.9, 8.0, 8.0], "borderColor": "#22c55e", "backgroundColor": "#22c55e22", "tension": 0.3, "spanGaps": true}, {"label": "医薬品", "data": [22.7, 22.7, 18.7, 18.5, 18.8], "borderColor": "#f59e0b", "backgroundColor": "#f59e0b22", "tension": 0.3, "spanGaps": true}, {"label": "建設業", "data": [7.0, 7.0, 5.7, 5.7, 5.7], "borderColor": "#3b82f6", "backgroundColor": "#3b82f622", "tension": 0.3, "spanGaps": true}, {"label": "情報・通信業", "data": [15.9, 15.9, 13.2, 12.9, 13.2], "borderColor": "#ec4899", "backgroundColor": "#ec489922", "tension": 0.3, "spanGaps": true}, {"label": "卸売業", "data": [8.2, 8.2, 6.8, 6.8, 6.8], "borderColor": "#14b8a6", "backgroundColor": "#14b8a622", "tension": 0.3, "spanGaps": true}, {"label": "銀行業", "data": [28.9, 28.9, 23.9, 24.3, 23.7], "borderColor": "#f97316", "backgroundColor": "#f9731622", "tension": 0.3, "spanGaps": true}, {"label": "石油・石炭製品", "data": [17.3, 17.3, 14.1, 14.2, 14.2], "borderColor": "#8b5cf6", "backgroundColor": "#8b5cf622", "tension": 0.3, "spanGaps": true}]},
+    data:{labels:["2026-06-21", "2026-06-22", "2026-06-23", "2026-06-24", "2026-06-25", "2026-06-26"],datasets:[{"label": "医薬品", "data": [22.7, 22.7, 18.7, 18.5, 18.8, 19.0], "borderColor": "#6366f1", "backgroundColor": "#6366f122", "tension": 0.3, "spanGaps": true}, {"label": "情報・通信業", "data": [15.9, 15.9, 13.2, 12.9, 13.2, 13.2], "borderColor": "#22c55e", "backgroundColor": "#22c55e22", "tension": 0.3, "spanGaps": true}, {"label": "卸売業", "data": [8.2, 8.2, 6.8, 6.8, 6.8, 6.7], "borderColor": "#f59e0b", "backgroundColor": "#f59e0b22", "tension": 0.3, "spanGaps": true}, {"label": "建設業", "data": [7.0, 7.0, 5.7, 5.7, 5.7, 5.7], "borderColor": "#3b82f6", "backgroundColor": "#3b82f622", "tension": 0.3, "spanGaps": true}, {"label": "石油・石炭製品", "data": [17.3, 17.3, 14.1, 14.2, 14.2, 14.1], "borderColor": "#ec4899", "backgroundColor": "#ec489922", "tension": 0.3, "spanGaps": true}, {"label": "化学", "data": [null, null, 9.7, 9.5, 9.7, 9.8], "borderColor": "#14b8a6", "backgroundColor": "#14b8a622", "tension": 0.3, "spanGaps": true}, {"label": "銀行業", "data": [28.9, 28.9, 23.9, 24.3, 23.7, 23.4], "borderColor": "#f97316", "backgroundColor": "#f9731622", "tension": 0.3, "spanGaps": true}, {"label": "輸送用機器", "data": [null, null, 7.9, 8.0, 8.0, 8.1], "borderColor": "#8b5cf6", "backgroundColor": "#8b5cf622", "tension": 0.3, "spanGaps": true}]},
     options:{
   responsive:true,maintainAspectRatio:false,
   plugins:{legend:{labels:{color:'#cbd5e1',font:{size:10},boxWidth:12}},
@@ -185,13 +185,13 @@ td{padding:7px 10px;border-bottom:1px solid #1e293b;vertical-align:middle}
 (function(){
   new Chart(document.getElementById('sPieChart'),{
     type:'doughnut',
-    data:{labels:["銀行業", "医薬品", "石油・石炭製品", "情報・通信業", "化学", "輸送用機器", "卸売業", "建設業"],datasets:[{data:[635600.0, 505300.0, 380500.0, 355500.0, 259450.0, 214400.0, 181900.0, 154200.0],backgroundColor:["#6366f1", "#22c55e", "#f59e0b", "#3b82f6", "#ec4899", "#14b8a6", "#f97316", "#8b5cf6"],borderWidth:1,borderColor:'#0f172a'}]},
+    data:{labels:["銀行業", "医薬品", "石油・石炭製品", "情報・通信業", "化学", "輸送用機器", "卸売業", "建設業"],datasets:[{data:[634000.0, 513300.0, 381500.0, 356100.0, 264800.0, 218400.0, 181400.0, 154600.0],backgroundColor:["#6366f1", "#22c55e", "#f59e0b", "#3b82f6", "#ec4899", "#14b8a6", "#f97316", "#8b5cf6"],borderWidth:1,borderColor:'#0f172a'}]},
     options:{
       responsive:true,maintainAspectRatio:false,
       plugins:{
         legend:{position:'right',labels:{color:'#cbd5e1',font:{size:10},boxWidth:12}},
         tooltip:{callbacks:{label:function(c){
-          var total=2686850.0;
+          var total=2704100.0;
           return c.label+': '+c.formattedValue+'円 ('+(c.raw/total*100).toFixed(1)+'%)';
         }}}
       }
@@ -200,7 +200,7 @@ td{padding:7px 10px;border-bottom:1px solid #1e293b;vertical-align:middle}
   new Chart(document.getElementById('sBarChart'),{
     type:'bar',
     data:{labels:["銀行業", "医薬品", "石油・石炭製品", "情報・通信業", "化学", "輸送用機器", "卸売業", "建設業"],datasets:[{
-      label:'比率(%)',data:[23.7, 18.8, 14.2, 13.2, 9.7, 8.0, 6.8, 5.7],backgroundColor:["#22c55e", "#22c55e", "#22c55e", "#22c55e", "#22c55e", "#22c55e", "#22c55e", "#22c55e"]
+      label:'比率(%)',data:[23.4, 19.0, 14.1, 13.2, 9.8, 8.1, 6.7, 5.7],backgroundColor:["#22c55e", "#22c55e", "#22c55e", "#22c55e", "#22c55e", "#22c55e", "#22c55e", "#22c55e"]
     }]},
     options:{
       indexAxis:'y',responsive:true,maintainAspectRatio:false,
