@@ -105,7 +105,7 @@ td{padding:7px 10px;border-bottom:1px solid #1e293b;vertical-align:middle}
 <div class="header">
   <div class="header-top">
     <span class="header-title">Aegis Portfolio Dashboard</span>
-    <span class="header-meta">生成: 2026-06-27 01:31</span>
+    <span class="header-meta">生成: 2026-06-27 01:33</span>
   </div>
   <div class="summary-cards">
     <div class="scard">
@@ -139,12 +139,12 @@ td{padding:7px 10px;border-bottom:1px solid #1e293b;vertical-align:middle}
     <div class="chart-wrap"><canvas id="hTrendChart"></canvas></div>
   </div>
   <div class="card">
-    <h2>最新スコア比較 <span class="date-badge">2026-06-26</span></h2>
+    <h2>最新スコア比較 <span class="date-badge">2026-06-27</span></h2>
     <div class="chart-wrap"><canvas id="hBarChart"></canvas></div>
   </div>
 </div>
 <div class="card mt16">
-  <h2>保有銘柄サマリー <span class="date-badge">2026-06-26</span></h2>
+  <h2>保有銘柄サマリー <span class="date-badge">2026-06-27</span></h2>
   <table>
     <thead><tr>
       <th>銘柄</th><th>価格</th><th>スコア</th><th>判定</th>
@@ -155,8 +155,8 @@ td{padding:7px 10px;border-bottom:1px solid #1e293b;vertical-align:middle}
 </div>
 <script>
 (function(){
-  var dates=["2026-06-21", "2026-06-22", "2026-06-23", "2026-06-24", "2026-06-25", "2026-06-26"];
-  var ds=[{"label": "K&Oエナジーグループ", "data": [1, 1, 3, 1, 3, 1], "borderColor": "#6366f1", "backgroundColor": "#6366f122", "tension": 0.3, "spanGaps": true}, {"label": "ispace", "data": [-1, -1, 0, -1, -1, -1], "borderColor": "#22c55e", "backgroundColor": "#22c55e22", "tension": 0.3, "spanGaps": true}, {"label": "クラシコム", "data": [-1, -1, -1, -1, -1, -1], "borderColor": "#f59e0b", "backgroundColor": "#f59e0b22", "tension": 0.3, "spanGaps": true}, {"label": "プラネット", "data": [1, 1, 1, 1, 1, 1], "borderColor": "#3b82f6", "backgroundColor": "#3b82f622", "tension": 0.3, "spanGaps": true}, {"label": "マツダ", "data": [null, null, 1, -1, -1, -1], "borderColor": "#ec4899", "backgroundColor": "#ec489922", "tension": 0.3, "spanGaps": true}, {"label": "三井住友フィナンシャルグループ", "data": [-1, -1, -1, -1, -1, -1], "borderColor": "#14b8a6", "backgroundColor": "#14b8a622", "tension": 0.3, "spanGaps": true}, {"label": "人・夢・技術グループ", "data": [1, 1, 1, 1, 1, 1], "borderColor": "#f97316", "backgroundColor": "#f9731622", "tension": 0.3, "spanGaps": true}, {"label": "伊藤忠商事", "data": [1, 1, 1, 1, 3, 3], "borderColor": "#8b5cf6", "backgroundColor": "#8b5cf622", "tension": 0.3, "spanGaps": true}, {"label": "共立メンテナンス", "data": [null, null, -1, 0, -1, -1], "borderColor": "#84cc16", "backgroundColor": "#84cc1622", "tension": 0.3, "spanGaps": true}, {"label": "第一三共", "data": [1, 1, 1, 1, 1, 1], "borderColor": "#06b6d4", "backgroundColor": "#06b6d422", "tension": 0.3, "spanGaps": true}, {"label": "関西ペイント", "data": [null, null, 0, 0, 0, -1], "borderColor": "#a855f7", "backgroundColor": "#a855f722", "tension": 0.3, "spanGaps": true}];
+  var dates=["2026-06-21", "2026-06-22", "2026-06-23", "2026-06-24", "2026-06-25", "2026-06-26", "2026-06-27"];
+  var ds=[{"label": "K&Oエナジーグループ", "data": [1, 1, 3, 1, 3, 1, 1], "borderColor": "#6366f1", "backgroundColor": "#6366f122", "tension": 0.3, "spanGaps": true}, {"label": "ispace", "data": [-1, -1, 0, -1, -1, -1, -1], "borderColor": "#22c55e", "backgroundColor": "#22c55e22", "tension": 0.3, "spanGaps": true}, {"label": "クラシコム", "data": [-1, -1, -1, -1, -1, -1, -1], "borderColor": "#f59e0b", "backgroundColor": "#f59e0b22", "tension": 0.3, "spanGaps": true}, {"label": "プラネット", "data": [1, 1, 1, 1, 1, 1, 1], "borderColor": "#3b82f6", "backgroundColor": "#3b82f622", "tension": 0.3, "spanGaps": true}, {"label": "マツダ", "data": [null, null, 1, -1, -1, -1, -1], "borderColor": "#ec4899", "backgroundColor": "#ec489922", "tension": 0.3, "spanGaps": true}, {"label": "三井住友フィナンシャルグループ", "data": [-1, -1, -1, -1, -1, -1, -1], "borderColor": "#14b8a6", "backgroundColor": "#14b8a622", "tension": 0.3, "spanGaps": true}, {"label": "人・夢・技術グループ", "data": [1, 1, 1, 1, 1, 1, 1], "borderColor": "#f97316", "backgroundColor": "#f9731622", "tension": 0.3, "spanGaps": true}, {"label": "伊藤忠商事", "data": [1, 1, 1, 1, 3, 3, 3], "borderColor": "#8b5cf6", "backgroundColor": "#8b5cf622", "tension": 0.3, "spanGaps": true}, {"label": "共立メンテナンス", "data": [null, null, -1, 0, -1, -1, -1], "borderColor": "#84cc16", "backgroundColor": "#84cc1622", "tension": 0.3, "spanGaps": true}, {"label": "第一三共", "data": [1, 1, 1, 1, 1, 1, 1], "borderColor": "#06b6d4", "backgroundColor": "#06b6d422", "tension": 0.3, "spanGaps": true}, {"label": "関西ペイント", "data": [null, null, 0, 0, 0, -1, -1], "borderColor": "#a855f7", "backgroundColor": "#a855f722", "tension": 0.3, "spanGaps": true}];
   new Chart(document.getElementById('hTrendChart'),{type:'line',data:{labels:dates,datasets:ds},options:{
   responsive:true,maintainAspectRatio:false,
   plugins:{legend:{labels:{color:'#cbd5e1',font:{size:10},boxWidth:12}},
