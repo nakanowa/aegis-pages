@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>Aegis — 下落原因</title>
+<title>Aegis — 候補チェック</title>
 <script>/**
  * Skipped minification because the original files appears to be already minified.
  * Original file: /npm/chart.js@4.4.0/dist/chart.umd.js
@@ -100,7 +100,7 @@ td{padding:7px 10px;border-bottom:1px solid #1e293b;vertical-align:middle}
 </style>
 </head>
 <body>
-<nav class="nav"><a href="index.html" class="nav-link">概要</a><a href="holdings.html" class="nav-link">保有銘柄</a><a href="watchlist.html" class="nav-link">ウォッチリスト</a><a href="sector.html" class="nav-link">セクター管理</a><a href="bargain.html" class="nav-link">お買い得度</a><a href="cause.html" class="nav-link  active">下落原因</a><a href="dip.html" class="nav-link">押し目</a><a href="buy.html" class="nav-link">購入プラン</a><a href="screen.html" class="nav-link">候補チェック</a></nav>
+<nav class="nav"><a href="index.html" class="nav-link">概要</a><a href="holdings.html" class="nav-link">保有銘柄</a><a href="watchlist.html" class="nav-link">ウォッチリスト</a><a href="sector.html" class="nav-link">セクター管理</a><a href="bargain.html" class="nav-link">お買い得度</a><a href="cause.html" class="nav-link">下落原因</a><a href="dip.html" class="nav-link">押し目</a><a href="buy.html" class="nav-link">購入プラン</a><a href="screen.html" class="nav-link  active">候補チェック</a></nav>
 
 <div class="header">
   <div class="header-top">
@@ -136,49 +136,40 @@ td{padding:7px 10px;border-bottom:1px solid #1e293b;vertical-align:middle}
 <div class="card">
   <h2>この指標の読み方</h2>
   <p style="font-size:0.9rem;line-height:1.7;color:#cbd5e1;margin-bottom:14px">
-    銘柄が下げたとき、<b>「その銘柄だけが下がったのか、相場全体が下がったのか」</b>を引き算で見分けます。
-    各銘柄の直近リターンを <b>TOPIX（市場全体）</b> と <b>同業種グループの平均</b> と比べ、
-    下落の“犯人”を3つに分類します。
+    高配当株の母集団（<code>universe.csv</code>）を毎日スクリーニングし、
+    <b>ウォッチリストに入れる/外す候補</b>を自動で洗い出します。判断材料の提示のみで、
+    <b>ウォッチリストの追加・削除は自動では行いません</b>（最終判断は人間）。
   </p>
   <table style="margin-bottom:6px">
-    <thead><tr><th>ラベル</th><th>意味</th><th>あなたにとっての含意</th></tr></thead>
+    <thead><tr><th>区分</th><th>意味</th><th>アクション</th></tr></thead>
     <tbody>
       <tr>
-        <td><span class="dbadge dbadge-ok">🌊 市場連動</span></td>
-        <td>市場全体（TOPIX）に連動した下げ。地合いのせい。</td>
-        <td>その銘柄が悪いわけではない。<b>優良な高配当株なら、むしろ買い場になりやすい</b>（押し目評価=P2へ）。</td>
+        <td><span class="dbadge dbadge-ok">新規候補</span></td>
+        <td>母集団のうち利回りが基準以上で、まだ未登録の銘柄。</td>
+        <td>内容を確認し、良さそうなら手動で watchlist に追加。</td>
       </tr>
       <tr>
-        <td><span class="dbadge dbadge-warn">🏭 セクター連動</span></td>
-        <td>同業種だけが下げている。業界要因（為替・規制・市況など）。</td>
-        <td>銘柄固有の致命傷ではないことが多い。業界の事情を一度確認。</td>
-      </tr>
-      <tr>
-        <td><span class="dbadge dbadge-danger">⚠️ 銘柄固有</span></td>
-        <td>その銘柄だけが突出して下げた。市場・同業から大きく劣後。</td>
-        <td><b>ここだけ要注意。</b>決算ミス・不祥事など固有の悪材料の可能性 → <b>原因を自分で調べるトリガー</b>。</td>
+        <td><span class="dbadge dbadge-warn">脱落</span></td>
+        <td>ウォッチリスト登録済みだが、利回りが基準を下回った銘柄。</td>
+        <td>高配当の前提が崩れていないか確認し、必要なら手動で削除。</td>
       </tr>
     </tbody>
   </table>
   <p style="font-size:0.78rem;color:#64748b;line-height:1.6;margin-top:12px">
-    ・判定は「超過損失 = 銘柄リターン − TOPIX/セクターのリターン」で行い、誤差レンジ内なら連動と見なします。<br>
-    ・<b>⚠️銘柄固有 かつ 大幅下落</b>のときだけ、保有銘柄の危険度スコアを自動で1段階引き上げます。<br>
-    ・これは<b>「即売れ」ではなく「原因を深掘りせよ」</b>というサイン。最終判断は人間が行います（投資哲学）。<br>
-    ・<span class="dbadge dbadge-gray">低信頼</span> は同業の保有銘柄が少なく、セクター平均が作れなかった銘柄です。
+    ・追加/削除は下記コマンドを手元で実行します（自動では変更しません）:<br>
+    &nbsp;&nbsp;<code>python src/watchlist_screener.py --add 5401.T,5411.T</code><br>
+    &nbsp;&nbsp;<code>python src/watchlist_screener.py --remove 2602.T</code><br>
+    ・利回りは yfinance の直近値。基準(既定3.5%)は <code>.env</code> の <code>SCREEN_YIELD_MIN</code> で調整できます。
   </p>
 </div>
 <div class="card mt16">
-  <h2>下落原因 分類結果 <span class="date-badge">2026-08-05</span></h2>
-  <div class="alert-bar" style="margin-bottom:14px"><span class="badge badge-ok">🌊 市場連動 4件</span><span class="badge badge-warn">🏭 セクター連動 0件</span><span class="badge badge-danger">⚠️ 銘柄固有 7件</span></div>
-  <table>
-    <thead><tr>
-      <th>銘柄</th><th>原因</th>
-      <th>銘柄<br>1日</th><th>TOPIX<br>1日</th><th>セクター<br>1日</th>
-      <th>対TOPIX<br>超過</th><th>対セクター<br>超過</th>
-    </tr></thead>
-    <tbody><tr><td>マツダ <span class="ticker-sm">(7261.T)</span></td><td><span class="dbadge dbadge-danger">⚠️ 銘柄固有</span> <span class="dbadge dbadge-gray">低信頼</span></td><td class="num neg">-2.76%</td><td class="num">+0.15%</td><td class="num">－</td><td class="num">-2.91%</td><td class="num">－</td></tr><tr><td>第一三共 <span class="ticker-sm">(4568.T)</span></td><td><span class="dbadge dbadge-danger">⚠️ 銘柄固有</span> <span class="dbadge dbadge-gray">低信頼</span></td><td class="num neg">-2.72%</td><td class="num">+0.15%</td><td class="num">－</td><td class="num">-2.87%</td><td class="num">－</td></tr><tr><td>三井住友フィナンシャルグループ <span class="ticker-sm">(8316.T)</span></td><td><span class="dbadge dbadge-danger">⚠️ 銘柄固有</span> <span class="dbadge dbadge-gray">低信頼</span></td><td class="num neg">-1.50%</td><td class="num">+0.15%</td><td class="num">－</td><td class="num">-1.65%</td><td class="num">－</td></tr><tr><td>共立メンテナンス <span class="ticker-sm">(9616.T)</span></td><td><span class="dbadge dbadge-danger">⚠️ 銘柄固有</span> <span class="dbadge dbadge-gray">低信頼</span></td><td class="num neg">-1.18%</td><td class="num">+0.15%</td><td class="num">+2.48%</td><td class="num">-1.33%</td><td class="num">－</td></tr><tr><td>K&Oエナジーグループ <span class="ticker-sm">(1663.T)</span></td><td><span class="dbadge dbadge-danger">⚠️ 銘柄固有</span> <span class="dbadge dbadge-gray">低信頼</span></td><td class="num neg">-1.05%</td><td class="num">+0.15%</td><td class="num">－</td><td class="num">-1.20%</td><td class="num">－</td></tr><tr><td>クラシコム <span class="ticker-sm">(7110.T)</span></td><td><span class="dbadge dbadge-danger">⚠️ 銘柄固有</span> <span class="dbadge dbadge-gray">低信頼</span></td><td class="num neg">-0.99%</td><td class="num">+0.15%</td><td class="num">－</td><td class="num">-1.14%</td><td class="num">－</td></tr><tr><td>伊藤忠商事 <span class="ticker-sm">(8001.T)</span></td><td><span class="dbadge dbadge-ok">🌊 市場連動</span> <span class="dbadge dbadge-gray">低信頼</span></td><td class="num neg">-0.78%</td><td class="num">+0.15%</td><td class="num">－</td><td class="num">-0.93%</td><td class="num">－</td></tr><tr><td>プラネット <span class="ticker-sm">(2391.T)</span></td><td><span class="dbadge dbadge-ok">🌊 市場連動</span> <span class="dbadge dbadge-gray">低信頼</span></td><td class="num neg">-0.51%</td><td class="num">+0.15%</td><td class="num">－</td><td class="num">-0.66%</td><td class="num">－</td></tr><tr><td>人・夢・技術グループ <span class="ticker-sm">(9248.T)</span></td><td><span class="dbadge dbadge-ok">🌊 市場連動</span> <span class="dbadge dbadge-gray">低信頼</span></td><td class="num pos">+0.26%</td><td class="num">+0.15%</td><td class="num">－</td><td class="num">+0.11%</td><td class="num">－</td></tr><tr><td>関西ペイント <span class="ticker-sm">(4613.T)</span></td><td><span class="dbadge dbadge-ok">🌊 市場連動</span> <span class="dbadge dbadge-gray">低信頼</span></td><td class="num pos">+0.42%</td><td class="num">+0.15%</td><td class="num">－</td><td class="num">+0.27%</td><td class="num">－</td></tr><tr><td>ispace <span class="ticker-sm">(9348.T)</span></td><td><span class="dbadge dbadge-danger">⚠️ 銘柄固有</span> <span class="dbadge dbadge-gray">低信頼</span></td><td class="num pos">+2.48%</td><td class="num">+0.15%</td><td class="num">-1.18%</td><td class="num">+2.33%</td><td class="num">－</td></tr></tbody>
-  </table>
-  <p class="note">「超過」= 銘柄リターン − TOPIX/セクターのリターン（マイナスほど大きく劣後）</p>
+  <h2>新規候補（追加検討） <span class="date-badge">2026-08-05</span>
+      <span class="count-badge">利回り≥3.5% / 0件</span></h2>
+  <p class='no-data' style='padding:20px'>該当なし</p>
+</div>
+<div class="card mt16">
+  <h2>脱落（削除検討） <span class="count-badge">利回り＜3.5% / 9件</span></h2>
+  <table><thead><tr><th>銘柄</th><th>利回り</th><th>セクター</th><th>カテゴリ</th></tr></thead><tbody><tr><td>北海道瓦斯 <span class="ticker-sm">(9534.T)</span></td><td class="num pos">3.45%</td><td>電気・ガス業</td><td class="gray-sm">高配当候補(電気・ガス業)</td></tr><tr><td>東北電力 <span class="ticker-sm">(9506.T)</span></td><td class="num pos">3.36%</td><td>電気・ガス業</td><td class="gray-sm">高配当候補(電気・ガス業)</td></tr><tr><td>DIC <span class="ticker-sm">(4631.T)</span></td><td class="num pos">3.20%</td><td>化学</td><td class="gray-sm">高配当候補(化学)</td></tr><tr><td>四国電力 <span class="ticker-sm">(9507.T)</span></td><td class="num pos">3.19%</td><td>電気・ガス業</td><td class="gray-sm">高配当候補(電気・ガス業)</td></tr><tr><td>北海道電力 <span class="ticker-sm">(9509.T)</span></td><td class="num pos">3.18%</td><td>電気・ガス業</td><td class="gray-sm">高配当候補(電気・ガス業)</td></tr><tr><td>日清オイリオグループ <span class="ticker-sm">(2602.T)</span></td><td class="num pos">3.15%</td><td>食料品</td><td class="gray-sm">高配当候補(食料品)</td></tr><tr><td>東京海上ホールディングス <span class="ticker-sm">(8766.T)</span></td><td class="num pos">3.11%</td><td>保険業</td><td class="gray-sm">高配当候補(保険業)</td></tr><tr><td>クラレ <span class="ticker-sm">(3405.T)</span></td><td class="num pos">3.00%</td><td>化学</td><td class="gray-sm">高配当候補(化学)</td></tr><tr><td>セイコーエプソン <span class="ticker-sm">(6724.T)</span></td><td class="num pos">2.71%</td><td>電気機器</td><td class="gray-sm">高配当候補(電気機器)</td></tr></tbody></table><p class="note" style="text-align:left"><code>python src/watchlist_screener.py --remove 9534.T,9506.T,4631.T,9507.T,9509.T,2602.T,8766.T,3405.T,6724.T</code></p>
 </div>
 </div>
 </body>
